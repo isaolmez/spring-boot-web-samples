@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-	@Value("${application.message}")
-	private String message;
-	
-	@GetMapping
-    @RequestMapping(value="/")
-    public String index(Model model){
-		Date time = new Date();
-		model.addAttribute("message", message);
-		model.addAttribute("time", time);
+    @Value("${application.message}")
+    private String message;
+
+    @GetMapping
+    @RequestMapping(value = "/")
+    public String index(Model model) {
+        Date time = new Date();
+        model.addAttribute("message", message);
+        model.addAttribute("time", time);
         return "index";
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
@@ -26,7 +27,7 @@ public class ApplicationTest {
     private MockMvc mockMvc;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
@@ -34,7 +35,8 @@ public class ApplicationTest {
     public void shouldFetchIndex() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"));
     }
 
     @Test
@@ -48,6 +50,7 @@ public class ApplicationTest {
     public void shouldFetchCount() throws Exception {
         this.mockMvc.perform(get("/count"))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(view().name("count"));
     }
 }

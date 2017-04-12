@@ -5,3 +5,7 @@
 **/.project
 **/.settings
 **/.classpath
+
+# Idea
+**/.idea
+**/*.iml
